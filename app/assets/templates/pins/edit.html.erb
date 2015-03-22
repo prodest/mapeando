@@ -1,11 +1,14 @@
 <div class="edit-pin-form">
   <div class="row">
 
-    <form ng-submit="void()" ng-init="demand.pin_fullname = 'Rua '">
-      <label>Pesquise pelo nome da rua: <br/><input ng-model="demand.pin_fullname" type="text" name="search" id="searchTextField" placeholder="Digite aqui o nome da rua, logradouro ou bairro" value="Rua " />
-      
-        <span ng-show="demand.pin_fullname" class="info" ng-hide="!demand.pin_fullname">Dica: você pode <strong>arrastar o ponto no mapa</strong> para onde quiser.</span>
+    <form ng-submit="void()">
+      <label>
+        <span class="info">Você pode <strong>arrastar o ponto no mapa</strong> para qualquer lugar.</span>
+        <input ng-model="demand.pin_fullname" type="text" name="search" id="searchTextField" placeholder="Digite aqui o nome da rua, avenida, local etc" />
       </label>
+
+      <span class="edit-pin-action add-point"><a ng-click=""><%= image_tag 'add.png', size: '23x23' %> Criar uma rota</a></span>
+      <!--<span class="pin-action undo-point"><%= image_tag 'add.png' %> </span>-->
       
     </form>
   </div>
@@ -17,7 +20,7 @@
 </div>
 
 <div class="form-options">
-  <div class="row ">
+  <div class="row">
     <div class="medium-6 small-6 columns text-left">
       <a href="#/"  class="reset" ng-click="reset()">Cancelar</a>
     </div>
@@ -26,4 +29,5 @@
     </div>
   </div>
 </div>
+
 

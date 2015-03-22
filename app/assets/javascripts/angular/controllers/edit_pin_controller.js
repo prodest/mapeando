@@ -1,4 +1,6 @@
-controllers.controller('editPinController', ['$scope', 'demandFormFactory', 'mapFactory' ,'$location', function($scope, demandFormFactory, mapFactory, $location){
+controllers.controller('editPinController', [
+  '$scope', 'demandFormFactory', 'mapFactory' ,'$location',
+  function($scope, demandFormFactory, mapFactory, $location){
 
   $scope.markers = null;
   $scope.map = mapFactory.buildMap('user-map');
@@ -8,10 +10,10 @@ controllers.controller('editPinController', ['$scope', 'demandFormFactory', 'map
 
 
   $scope.initialize = function() {
-    if (!$scope.demand.user) {
-      $location.path('/demands/new');
-    }
-
+/*    if (!$scope.demand.user) {*/
+      //$location.path('/demands/new');
+    /*}*/
+    
     $scope.setupAutoComplete();
   }
 
@@ -42,9 +44,6 @@ controllers.controller('editPinController', ['$scope', 'demandFormFactory', 'map
       $scope.showMarkerOnAutocomplete(lat, lng);
   
       $scope.updateDemandPins(lat, lng);
-
-      $scope.$apply();
-
     });
 
   }
@@ -63,7 +62,7 @@ controllers.controller('editPinController', ['$scope', 'demandFormFactory', 'map
         $scope.markers.clearLayers();
     }
 
-    var icon = L.icon({ iconUrl: 'http://i.imgur.com/S7CbL0Q.png', iconSize: [60, 106], iconAnchor: [60, 100] });
+    var icon = L.icon({ iconUrl: 'http://i.imgur.com/S7CbL0Q.png', iconSize: [60, 106], iconAnchor: [60, 85] });
     var marker = L.marker([lat, lng], { icon: icon, draggable: true });
 
     $scope.markers = L.layerGroup([marker])
