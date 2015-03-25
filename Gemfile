@@ -44,6 +44,7 @@ end
 # Asset Pipeline
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'rails-assets-angular-load' # Assyn script loading
 gem 'rails-assets-angular-devise'
 gem 'rails-assets-angular-loading-bar'
 gem 'rails-assets-angular-filter'

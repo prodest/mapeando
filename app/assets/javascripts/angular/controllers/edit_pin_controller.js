@@ -1,19 +1,23 @@
 controllers.controller('editPinController', [
-  '$scope', 'demandFormFactory', 'mapFactory' ,'$location',
-  function($scope, demandFormFactory, mapFactory, $location){
+  '$scope', 'demandFormFactory', 'mapFactory' ,'$location', 'angularLoad',
+  function($scope, demandFormFactory, mapFactory, $location, angularLoad){
 
+
+  $scope.mapQuestKey = "Fmjtd%7Cluu82l0rll%2Cbg%3Do5-94zxha";
   $scope.markers = null;
-  $scope.map = mapFactory.buildMap('user-map');
   $scope.demand = demandFormFactory;
   $scope.userMarker;
 
-
+  $scope.loadScripts();
 
   $scope.initialize = function() {
 /*    if (!$scope.demand.user) {*/
       //$location.path('/demands/new');
     /*}*/
-    
+   
+
+    $scope.map = mapFactory.buildMap('user-map');
+    $scope.map.setZoom(13);
     $scope.setupAutoComplete();
   }
 
@@ -111,6 +115,19 @@ controllers.controller('editPinController', [
     
   }
 
+
+  $scope.loadScripts = function() {
+    angularLoad.loadScript('https://maps.googleapis.com/maps/api/js?libraries=places&region=BR&language=pt_BR&output=json').then(function(){
+    
+      $scope.initialize();
+    
+
+      angularLoad.loadScript('http://www.mapquestapi.com/sdk/leaflet/v1.s/mq-map.js?key='+ $scope.mapQuestKey);
+      angularLoad.loadScript('http://www.mapquestapi.com/sdk/leaflet/v1.s/mq-routing.js?key='+ $scope.mapQuestKey);
+    });
+
+  }
+
   $scope.reset = function() {
     $scope.demand = null;
   }
@@ -127,7 +144,6 @@ controllers.controller('editPinController', [
  
 
 
-  $scope.initialize();
 
 
 }]);

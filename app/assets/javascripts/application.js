@@ -18,6 +18,7 @@
 //= require angular-loading-bar
 //= require angular-filter
 //= require angular-easyfb
+//= require angular-load
 //= require angulartics/angulartics
 //= require angulartics/angulartics-ga
 //
