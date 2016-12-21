@@ -1,5 +1,5 @@
 FROM ruby:2.2.0
-MAINTAINER Matthieu ANTOINE <matthieu@matthieu-antoine.me>
+MAINTAINER Clayton Silva <clayton.silva@prodest.es.gov.br>
 
 
 ADD . /app
@@ -10,11 +10,12 @@ RUN bundle config git.allow_insecure true && \
     bundle install --without sqlite mysql development test --deployment
 
 
+COPY docker-entrypoint.sh /
+RUN chmod a+x /docker-entrypoint.sh
 
 EXPOSE 3000
 
-
-# Or "CMD /etc/init.d/postgresql restart && passenger start -a 0.0.0.0 -p 3000 -e production --friendly-error-pages" for debug error
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 
 
