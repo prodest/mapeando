@@ -81,18 +81,18 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-  config.action_mailer.default_url_options = { :host => 'mapeando.rio.gov.br' }
+  config.action_mailer.default_url_options = { :host => 'mapeando.es.gov.br' }
   config.action_mailer.delivery_method = :smtp
  
 
 
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.mandrillapp.com',
-    :port           => '587',
+    :address        => ENV['SMTP_SERVER'],
+    :port           => ENV['SMTP_PORT'],
     :authentication => :plain,
-    :user_name      => ENV['MANDRILL_USERNAME'],
-    :password       => ENV['MANDRILL_APIKEY'],
-    :domain         => 'heroku.com',
+    :user_name      => ENV['SMTP_USER'],
+    :password       => ENV['SMTP_PASSWORD'],
+    :domain         => ENV['SMTP_DOMAIN'],
     :enable_starttls_auto => true
   }
 end

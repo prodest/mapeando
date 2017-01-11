@@ -26,8 +26,8 @@ controllers.controller('routingController', [
 
   $scope.setupAutoComplete = function() {
     var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-23.0763561, -43.7959671),
-      new google.maps.LatLng(-22.7259989, -43.0799675)
+      new google.maps.LatLng(-20.3118161,-40.3283935),
+      new google.maps.LatLng(-20.3206709,-40.3443195)
     );
 
     var options = { bounds: defaultBounds, componentRestrictions: { country: 'BR' } };
